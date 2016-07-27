@@ -22,7 +22,7 @@ Nameservers = 8.8.8.8,8.8.4.4`;
     console.info(`SSID set to '${process.env.SSID}'`);
     console.info(`PSK set to '${process.env.PSK}'`);
     utils.durableWriteFile(config.connmanConfig, data).then(() => {
-        console.info(`file written to ${config.connmanConfig}...exiting`)
+        console.info(`file written to ${config.connmanConfig}...exiting`);
         process.exit();
     }).catch((e)=>{
         console.log('error writing file', e)
