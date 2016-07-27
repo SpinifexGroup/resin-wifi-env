@@ -15,6 +15,7 @@
   "author": "qbunt",
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^3.4.1"
+    "bluebird": "^3.4.1",
+    "dbus": "^0.2.19"
   }
 }

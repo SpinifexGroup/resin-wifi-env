@@ -2,6 +2,7 @@ const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
 const config = require('./config');
 const utils = require('./utils');
+const connman = require('./connman');
 
 var setup = () => {
     if (process.env.SSID === undefined || process.env.PSK === undefined) {
@@ -23,9 +24,17 @@ Nameservers = 8.8.8.8,8.8.4.4`;
     console.info(`PSK set to '${process.env.PSK}'`);
     utils.durableWriteFile(config.connmanConfig, data).then(() => {
         console.info(`file written to ${config.connmanConfig}...exiting`);
+    }).delay(1000)
+    .then(()=>{
+        connman.waitForConnection(15000)
+    })
+    .then(()=>{
+        utils.durableWriteFile(config.persistentConfig, data)
+    })
+    .then(()=>{
         process.exit();
     }).catch((e)=>{
-        console.log('error writing file', e)
+        console.log('error writing file', e);
     })
 };
 
