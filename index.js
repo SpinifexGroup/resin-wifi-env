@@ -29,9 +29,13 @@ Nameservers = 8.8.8.8,8.8.4.4`;
         connman.waitForConnection(15000)
     })
     .then(()=>{
+        console.info('connected!')
+    })
+    .then(()=>{
         utils.durableWriteFile(config.persistentConfig, data)
     })
     .then(()=>{
+        console.info('config complete, exiting...');
         process.exit();
     }).catch((e)=>{
         console.log('error writing file', e);
