@@ -1,0 +1,20 @@
+{
+  "name": "resin-wifi-env",
+  "version": "0.1.0",
+  "description": "Module to configure resin.io devices to accept SSID and PSK values from environment variables",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "resin.io",
+    "raspberrypi",
+    "iot"
+  ],
+  "author": "qbunt",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.4.1"
+  }
+}
