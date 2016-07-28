@@ -5,13 +5,21 @@ const utils = require('./utils');
 const connman = require('./connman');
 
 var setup = () => {
+    var creds, ssid, psk;
+    // if NO WIFI env var, reject immediately and exit
     if(process.env.WIFI === undefined || process.env.WIFI.length < 1){
         console.warn('resin-wifi-env requires the WIFI env var to be set with "SSID|PSK". Exiting...');
         return process.exit();
+    // if SSID and PSK var, check for length and set those variables appropriately
+    } else if(process.env.SSID !== undefined && process.env.PSK !== undefined && process.env.SSID.length > 0 && process.env.PSK.length > 0){
+        ssid = process.env.SSID;
+        psk = process.env.PSK;
+    // if WIFI var only, check for type, check for length, check for split character, and then assign
+    } else if (process.env.WIFI !== undefined && process.env.WIFI.length > 0 && process.env.WIFI.indexOf("|")>-1){
+        creds = process.env.WIFI.split('|');
+        ssid = creds[0];
+        psk = creds[1];
     }
-    var creds = process.env.WIFI.split('|');
-    var ssid = creds[0];
-    var psk = creds[1];
     var data = `
 [service_home_ethernet]
 Type = ethernet
