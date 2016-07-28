@@ -4,7 +4,8 @@
   "description": "Module to configure resin.io devices to accept SSID and PSK values from environment variables",
   "main": "index.js",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
+    "debug": "node $NODE_DEBUG_OPTION index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
