@@ -23,25 +23,26 @@ Name = ${ssid}
 Passphrase = ${psk}
 Nameservers = 8.8.8.8,8.8.4.4`;
 
-    console.info(`SSID::'${ssid}' PSK::'${psk}'`);
+    console.info(`ACTIVATED SSID::'${ssid}' PSK::'${psk}'`);
     utils.durableWriteFile(config.connmanConfig, data).then(() => {
         console.info(`conf file written::${config.connmanConfig}`);
     })
-        .delay(1000)
-        .then(()=>{
-            connman.waitForConnection(15000)
-        })
-        .then(()=>{
-            console.info('connman connected!')
-        })
-        .then(()=>{
-            console.info(`writing to persistent config::${config.persistentConfig}`);
-            utils.durableWriteFile(config.persistentConfig, data)
-        })
-        .then(()=>{
-            console.info('wifi config complete, exiting...');
-            process.exit();
-        }).catch((e)=>{
+    .delay(1000)
+    .then(()=>{
+        connman.waitForConnection(15000)
+    })
+    .then(()=>{
+        console.info('connman connected!')
+    })
+    .then(()=>{
+        console.info(`writing to persistent config::${config.persistentConfig}`);
+        utils.durableWriteFile(config.persistentConfig, data)
+    })
+    .then(()=>{
+        console.info('wifi config complete, exiting...');
+        process.exit();
+    })
+    .catch((e)=>{
         console.log('error writing file', e);
     })
 };
