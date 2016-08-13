@@ -1,4 +1,6 @@
-##resin-wifi-env
+## resin-wifi-env
+
+[![dependencies](https://david-dm.org/spinifexgroup/resin-wifi-env.svg) ](https://david-dm.org/)
 
 [WIP]
 
@@ -11,10 +13,9 @@ This module accepts the following environment variable:
 
 The environment variable above *heavily* relies on the '|' character to split the pair apart. This is done to prevent restarting the Resin device Docker container from starting twice, as a single environment variable change will trigger an application restart.
 
-This module borrows very heavily from the [resin wifi connect](https://github.com/resin-io/resin-wifi-connect) project for dbus and connman status changes 
+This module borrows very heavily from the [resin wifi connect](https://github.com/resin-io/resin-wifi-connect) project for dbus and connman status changes
 
 
 TODO    
 * Integration docs
 * Tests
-    
